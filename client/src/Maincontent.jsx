@@ -8,7 +8,7 @@ import FalsePosition from "./components/Falseposition";
 import NewtonRaphson from "./components/Newton";
 import Onepoint from "./components/Onepoint";
 import Secant from "./components/Secant";
-function Maincontent() {
+function Maincontent({ setShowe }) {
   const [typeProb, setTypeProb] = useState("");
   const [sol, setSol] = useState([]);
   const [selectedMethod, setSelectedMethod] = useState("");
@@ -60,18 +60,25 @@ function Maincontent() {
   const renderComponet = function () {
     switch (selectedMethod) {
       case "Bisection Methods":
+        setShowe(false);
         return <Bisection />;
       case "False-Position Methods":
+        setShowe(false);
         return <FalsePosition />;
       case "One-Point Iteration Methods":
+        setShowe(false);
         return <Onepoint />;
       case "Newton-Raphson Methods":
+        setShowe(false);
         return <NewtonRaphson />;
       case "Secant Methods":
+        setShowe(false);
         return <Secant />;
       case "Cramer's Rule":
+        setShowe(false);
         return <Cramer />;
       default:
+        setShowe(true);
         return null;
     }
   };

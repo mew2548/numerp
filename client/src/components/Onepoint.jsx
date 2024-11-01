@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import { evaluate } from "mathjs";
@@ -94,6 +95,30 @@ function Onepoint() {
         setError("");
         const newResult = calOnepoint();
         setResult(newResult);
+        axios
+          .post(
+            `${import.meta.env.VITE_API_URL}/save/rootequation/all`,
+            {
+              equation: formData.equation,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("saved");
+          })
+          .catch((err) => {
+            if (err.response) {
+              console.log(`${err.response.data.message}`);
+            } else if (err.request) {
+              console.log("Server Down");
+            } else {
+              console.log("Error:", err.message);
+            }
+          });
       }
     },
     [validateInput, calOnepoint]

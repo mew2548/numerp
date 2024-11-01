@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Maincontent from "./Maincontent";
 import "./App.css";
+import Show from "./Show";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [showe, setShowe] = useState(true);
 
   return (
     <>
-      <Maincontent />
+      <Maincontent setShowe={setShowe} />
+      {showe && <Show />}
     </>
   );
 }

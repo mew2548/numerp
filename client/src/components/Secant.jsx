@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 import Plot from "react-plotly.js";
@@ -114,6 +115,30 @@ function Secant() {
         setError("");
         const newResult = calSecant();
         setResult(newResult);
+        axios
+          .post(
+            `${import.meta.env.VITE_API_URL}/save/rootequation/all`,
+            {
+              equation: formData.equation,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("saved");
+          })
+          .catch((err) => {
+            if (err.response) {
+              console.log(`${err.response.data.message}`);
+            } else if (err.request) {
+              console.log("Server Down");
+            } else {
+              console.log("Error:", err.message);
+            }
+          });
       }
     },
     [validateInput, calSecant]

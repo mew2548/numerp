@@ -6,6 +6,10 @@ const cors = require("cors"); // cross origin resource อนุญาติใ�
 // const helmet = require("helmet");
 const rateLimit = require("express-rate-limit"); // กันคนยิงเว็บรัวๆ
 const timeout = require("express-timeout-handler").handler;
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yaml");
+const file = fs.readFileSync("./swagger.yaml", "utf-8");
+const swaggerDocument = YAML.parse(file);
 
 const app = express();
 // const port = process.env.PORT || 3000;
@@ -21,6 +25,8 @@ app.use(
     // credentials: true,
   })
 );
+//swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // app.use(helmet());
 app.use(express.json()); // เพื่ออ่านไฟล์ json / body ที่เป็น json
 
