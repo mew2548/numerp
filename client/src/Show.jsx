@@ -69,29 +69,6 @@ function Show() {
             </table>
           </div>
         </div>
-
-        <input
-          type="radio"
-          name="my_tabs_1"
-          role="tab"
-          className="tab"
-          aria-label="Tab 2"
-          defaultChecked
-        />
-        <div role="tabpanel" className="tab-content p-10">
-          Tab content 2
-        </div>
-
-        <input
-          type="radio"
-          name="my_tabs_1"
-          role="tab"
-          className="tab"
-          aria-label="Tab 3"
-        />
-        <div role="tabpanel" className="tab-content p-10">
-          Tab content 3
-        </div>
       </div>
     </div>
   );

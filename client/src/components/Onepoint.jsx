@@ -77,7 +77,6 @@ function Onepoint() {
       data: data,
       xInitial: xIntNum,
       iteration: data.length,
-      xInitial: xInitial,
       X: xN,
       error: ea,
     };
